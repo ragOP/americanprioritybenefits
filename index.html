@@ -54,11 +54,6 @@
    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Russo%20One">
    <link rel="stylesheet" href="css/tw-elements.min.css">
    <script src="https://cdn.tailwindcss.com"></script>
-
-   <script>
-      !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys onSessionId".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
-      posthog.init('phc_FhqVZ6IGpeGTflcAT1zn6umTj1UNJXoYC7EB3qd1GlG',{api_host:'https://app.posthog.com'})
-    </script>
   </head>
   <body>
 
@@ -120,9 +115,8 @@
         </svg>
       </div>
     </div>
-    <div class="status-wrapper relative w-full w-max-90% h-1 rounded-xl overflow-hidden">
-      <div data-chain--progress--component-target="barStatus" class="bar-status bg-[#3c91e6] w-0 h-full absolute top-0 left-0 transition-all duration-500 ease-linear z-10"></div>
-      <div class="statusBg w-full h-full absolute top-0 left-0 bg-[#e8e8e8]"></div>
+    <div class="relative w-full max-w-[100%] h-1 rounded-xl overflow-hidden mb-4 bg-gray-300">
+      <div data-chain--progress--component-target="barStatus" class="bg-blue-500 h-full w-0 transition-all duration-500 ease-linear"></div>
     </div>
   </div>
   <section id="iza4y5" class="content w-full bg-white text-[#242424]">
@@ -131,24 +125,35 @@
         <div data-chain--component-target="questionsWrapper" id="ittgy-2" class="questions-wrapper prepopulated-area progressbar-template translate-x-0 transform whitespace-nowrap text-center transition-all duration-500 ease-in-out">
         
           <div class="lander-item relative inline-block h-auto w-screen max-w-full translate-y-4 transform-none whitespace-normal align-top transition duration-200 ease-in" data-chain--component-target="question">
-            <div class="text-[#19329a] italic text-[0.9em] font-semibold text-center mb-[5px]">Medicicare Recipients Could Qualify for Additional Medicare Benefits</div>
-            <img src="images/medc.png" class="mx-auto img-responsive wow flipInX animated  max-w-[250px] my-4" style="visibility: visible; animation-name: flipInX;;">
-            <div class="mt-[15px] text-center text-[1.6em] font-bold leading-[1.2] text-[#2a2a2b] mb-7">Do you live in the U.S.</div>
-            <div class="flex flex-col w-full space-y-2.5 mx-auto max-w-sm mt-6">
-              <button data-action="click->chain--answer--button--component#handleAnswer" class="relative block bg-white text-[#0b3954] rounded-sm py-5 px-3.5 border border-[#0B3954] cursor-pointer shadow-md text-lg font-semibold">
+            <div class="text-[#19329a] italic text-[0.9em] font-semibold text-center mb-[5px]" id="handleHeading">Medicicare Recipients Could Qualify for Additional Medicare Benefits</div>
+            <img src="images/medc.png" class="mx-auto img-responsive wow flipInX animated  max-w-[250px] my-4" style="visibility: visible; animation-name: flipInX;" id="handleImg">
+            <div class="mt-[15px] text-center text-[1.6em] font-bold leading-[1.2] text-[#2a2a2b] mb-7" id="handleQuestion">Do you live in the U.S.</div>
+            <div class="flex items-center justify-center w-full">
+            <video id="handleVid" class="hidden" src="./images/test.mp4" loop autoplay muted playsinline style="width: 150px;"></video>
+          </div>
+            <div class="flex flex-col w-full space-y-2.5 mx-auto max-w-sm mt-6" id="handleBtn">
+              <button class="relative block bg-white text-[#0b3954] rounded-sm py-5 px-3.5 border border-[#0B3954] cursor-pointer shadow-md text-lg font-semibold" id="handleYes">
                 Yes
                 <svg xmlns="http://www.w3.org/2000/svg" class="hidden selected-icon h-6 w-6 absolute right-4 top-1/2 transform -translate-y-1/2 text-[#0b3954]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" fill="white"></circle>
                   <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"></path>
                 </svg>
               </button>
-              <button data-action="click->chain--answer--button--component#handleAnswer" class="relative block bg-white text-[#0b3954] rounded-sm py-5 px-3.5 border border-[#0B3954] cursor-pointer shadow-md text-lg font-semibold">
+              <button data-action="click->chain--answer--button--component#handleAnswer" class="relative block bg-white text-[#0b3954] rounded-sm py-5 px-3.5 border border-[#0B3954] cursor-pointer shadow-md text-lg font-semibold" id="handleNo">
                 No
                 <svg xmlns="http://www.w3.org/2000/svg" class="hidden selected-icon h-6 w-6 absolute right-4 top-1/2 transform -translate-y-1/2 text-[#0b3954]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" fill="white"></circle>
                   <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"></path>
                 </svg>
               </button>
+              <button data-action="click->chain--answer--button--component#handleAnswer" class="relative block bg-white text-[#0b3954] rounded-sm py-5 px-3.5 border border-[#0B3954] cursor-pointer shadow-md text-lg font-semibold hidden" id="handleCall">
+                Call Now
+                <svg xmlns="http://www.w3.org/2000/svg" class="hidden selected-icon h-6 w-6 absolute right-4 top-1/2 transform -translate-y-1/2 text-[#0b3954]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" fill="white"></circle>
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"></path>
+                </svg>
+              </button>
+              
             </div>
             <div class="text-center mt-8">
               <p class="text-[0.6em] mx-auto"></p>
@@ -260,275 +265,60 @@ insurance company.
 **Medicare Supplement insurance plans are not connected with or endorsed by the U.S. government or the federal Medicare program.
 </div>
   <div id="f-name">© 2024 mybenefitsupport.com</div>
-</footer>
-
-    <script type="text/javascript">
-        document.getElementById("f-name").innerText = "© " + new Date().getFullYear() +" "+ window.location.hostname
-    </script>
-  
-<script async="" id="netlify-rum-container" src="rum" data-netlify-rum-site-id="be75140c-96e0-4acd-8e73-a415de3906ff" data-netlify-deploy-branch="main" data-netlify-deploy-context="production" data-netlify-cwv-token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaXRlX2lkIjoiYmU3NTE0MGMtOTZlMC00YWNkLThlNzMtYTQxNWRlMzkwNmZmIiwiYWNjb3VudF9pZCI6IjYzN2I4YWUyODhiMTkxM2UxNDQxYzliOSIsImRlcGxveV9pZCI6IjY2YjNlMTRhZTM3M2RmMDAwODViNTU5NyIsImlzc3VlciI6Im5mc2VydmVyIn0.YOIgiKLevEY7QRzprFIywbJ0-YsmMN1BdOK-T-lhdTM"></script>
-  <script type="text/javascript" src="js/inputFormatter.js"></script>
-  <script type="text/javascript" src="js/spinWheel.js"></script>
-  
   <script>
-    document.getElementById("f-name").innerText = "© " + new Date().getFullYear() +" "+ window.location.hostname
-    
-    
-    
+    const handleYes = document.getElementById("handleYes");
+    const handleNo = document.getElementById("handleNo");
+    const handleImg = document.getElementById("handleImg");
+    const handleQuestion = document.getElementById("handleQuestion");
+    const handleHeading = document.getElementById("handleHeading");
+    const handleCall = document.getElementById("handleCall");
+    const handleVid = document.getElementById("handleVid");
+    const progressBar = document.querySelector('[data-chain--progress--component-target="barStatus"]');
+    let count = 0;
+    let progress = 0;
 
-  </script>
-  <!-- CHAIN SCRIPT -->
-  <script type="module">
-    import { scrollToEl } from './assets/utils/index.js';
-    document.addEventListener('DOMContentLoaded', () => {
-      
-
-      function clearErrorMessages() {
-        // Find all error message spans by class name or other selector
-        const errorMessages = document.querySelectorAll('.inputError');
-        const errorInputs = document.querySelectorAll('.form-control_invalid')
-        // Loop through all found error message elements and remove them
-        errorMessages.forEach(function(errorMessage) {
-          errorMessage.remove();
-        });
-        errorInputs.forEach(function(errorInp) {
-          errorInp.classList.remove('form-control_invalid')
-        });
-      }
-
-      function clickButton(index){
-        const questionButtons = document.querySelectorAll('[data-chain--component-target="question"] button[data-action="click->chain--answer--button--component#handleAnswer"]');
-        questionButtons[index].click()
-      }
-      
-
-      function disableButton(index){
-        const questionButtons = document.querySelectorAll('[data-chain--component-target="question"] button[data-action="click->chain--answer--button--component#handleAnswer"]');
-        const currentButton = questionButtons[index];
-        const loaderIcon = currentButton.querySelector('.loaderIcon')
-        const defaultText = currentButton.querySelector('.defaultText')
-        const defaultIcon = currentButton.querySelector('.defaultIcon')
-        if(currentButton) currentButton.disabled = true;
-        if(defaultIcon) defaultIcon.classList.add('hidden')
-        if(defaultText) defaultText.classList.add('hidden')
-        if(loaderIcon) loaderIcon.classList.remove('hidden')
-
-      }
-
-      function enableButton(index){
-        const questionButtons = document.querySelectorAll('[data-chain--component-target="question"] button[data-action="click->chain--answer--button--component#handleAnswer"]');
-        const currentButton = questionButtons[index];
-        const loaderIcon = currentButton.querySelector('.loaderIcon')
-        const defaultText = currentButton.querySelector('.defaultText')
-        const defaultIcon = currentButton.querySelector('.defaultIcon')
-        if(currentButton) currentButton.disabled = false;
-        if(defaultIcon) defaultIcon.classList.remove('hidden')
-        if(defaultText) defaultText.classList.remove('hidden')
-        if(loaderIcon) loaderIcon.classList.add('hidden')
-      }
-
-      function loadingButton(index){
-        disableButton(index)
-      }
-
-      function arrowButton(index){
-        enableButton(index)
-      }
-      
-      function addErrorMessage(insertMode = 'append', inputElement, errorMessage, extraClasses = '') {
-        // Create a span element for the error message
-        const errorSpan = document.createElement('span');
-        const inputGroup = inputElement.closest('.form-input')
-        errorSpan.id = 'error-input'; // Set an id for the span (consider making this unique if multiple errors)
-        errorSpan.className = 'inputError text-red-600 hidden text-[10px] -z-10 ' + extraClasses; // Add classes for styling
-        errorSpan.textContent = errorMessage; // Set the error message text
-
-        console.log('inputGroup', inputGroup)
-        // Insert the error span after the input element
-        if (insertMode === 'prepend') {
-          inputElement.parentNode.insertBefore(errorSpan, inputElement)
-        } else {
-          (inputGroup || inputElement).insertAdjacentElement('afterend', errorSpan)
+    handleYes.addEventListener("click", ()=> {
+        if (progress === 33) {
+          progress = 66;
         }
-        inputElement && inputElement.classList.add('form-control_invalid')
-        // Make the error message visible
-        errorSpan.classList.remove('hidden');
-      }
-      let stepIndexValue = 1;
-
-      function prevStep(stepIndexValue){
-        let stepSize = 100; // Default value
-        let stepExt = "vw"; // Default unit
-        const questionTargets = document.querySelectorAll('[data-chain--component-target="question"]');
-        const questionsWrapperTarget = document.querySelector('[data-chain--component-target="questionsWrapper"]')
-        if (stepIndexValue > questionTargets.length) return //finish on last question
-        questionTargets[stepIndexValue].classList.add('hidden');
-        questionTargets[stepIndexValue].classList.remove('inline-flex');
-        questionTargets[stepIndexValue-1].classList.add('inline-flex');
-        questionTargets[stepIndexValue-1].classList.remove('hidden');
-        clearErrorMessages()
-      }
-      function updateProgressBar(currentStep, totalSteps) {
-        const questionTargets = document.querySelectorAll('[data-chain--component-target="question"]');
-        // Calculate the percentage of completion
-        const percentageComplete = (currentStep / totalSteps) * 100;
-
-        // Select the .bar-status element and update its width to reflect the progress
-        const progressBar = document.querySelector('.bar-status');
-        if (progressBar) {
-          progressBar.style.width = `${percentageComplete}%`;
+        if (progress === 0) {
+          progress = 33;
         }
+        progressBar.style.width = progress + '%';
+      if(count === 0){
+        handleImg.style.display = 'none';
+        handleQuestion.innerText = "Are you currently on Medicare parts A and B?";
+        count++
+      }else{
+        handleQuestion.innerText = "Your spot is being reserved for 1:00";
+        handleHeading.innerHTML = "Congratulations You May Qualify For Additional Benefits!";
+        handleYes.style.display = 'none'
+        handleNo.style.display = 'none'
+        handleCall.style.display = 'block';
+        handleVid.style.display = 'block';
       }
-
-      function nextStep(stepIndex){
-        posthog.capture('fai_fai_step_index_'+stepIndex)
-        let stepSize = 100; // Default value
-        let stepExt = "vw"; // Default unit
-        const questionTargets = document.querySelectorAll('[data-chain--component-target="question"]');
-        const questionsWrapperTarget = document.querySelector('[data-chain--component-target="questionsWrapper"]')
-        if (stepIndexValue > questionTargets.length) return //finish on last question
-        console.log('cur|prev', [questionTargets[stepIndex], questionTargets[stepIndex-1]])
-        questionTargets[stepIndex].classList.add('inline-flex');
-        questionTargets[stepIndex].classList.remove('hidden');
-        questionTargets[stepIndex-1].classList.add('hidden');
-        questionTargets[stepIndex-1].classList.remove('inline-flex');
-        updateProgressBar(stepIndex, questionTargets.length)
-        clearErrorMessages()
-        stepIndexValue++
-      }
-
-      document.querySelectorAll('.back-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          stepIndexValue--
-          const questions = Array.from(document.querySelectorAll('[data-chain--component-target="question"]'));
-          const activeIndex = questions.findIndex(question => !question.classList.contains('hidden'));
-          if (activeIndex !== -1) {
-            questions[activeIndex].classList.add('hidden');
-            
-            const prevIndex = activeIndex - 1;
-            if (prevIndex >= 0) {
-              questions[prevIndex].classList.remove('hidden');
-            }
-          }
-        });
-        scrollToEl(document.querySelector('header'))
-      });
-
-      function updateSelectTextColor(selectElement) {
-        if (selectElement.value) {
-          selectElement.classList.remove('text-[#949494]');
-          selectElement.classList.add('text-[#282828]');
-        } else {
-          selectElement.classList.remove('text-[#282828]');
-          selectElement.classList.add('text-[#949494]');
-        }
-      }
-
-      // Attach the function to all select elements on page load and on change
-      document.querySelectorAll('select').forEach(sel => {
-        updateSelectTextColor(sel);
-        sel.addEventListener('change', () => updateSelectTextColor(sel));
-      });
-
-
-      document.querySelectorAll('[data-action="click->chain--answer--button--component#handleAnswer"]').forEach(function(button) {
-        function updateButtonAndInputState(currentButton, currentInput) {
-          console.log('currentButton', currentButton)
-          const buttonAmount = currentButton.dataset.value
-          const selectedBtns = currentButton.parentNode.querySelectorAll('[data-action="click->chain--answer--button--component#handleAnswer"]');
-          selectedBtns.forEach(btn => {
-            const selectedIcon = btn.querySelector('.selected-icon')
-            if (selectedIcon) {
-              selectedIcon.classList.add('hidden')
-              btn.classList.remove('!border-2');
-              btn.classList.remove('!border-[#0b3955]')
-            }
-          });
-          const selectedIcon = currentButton.querySelector('.selected-icon')
-          if (selectedIcon) {
-            selectedIcon.classList.remove('hidden')
-            currentButton.classList.add('!border-[#0b3955]');
-            currentButton.classList.add('!border-2');
-          }
-          if (buttonAmount) {
-            if (currentInput) 
-              currentInput.value = buttonAmount;
-          }
-        }
-
-        button.addEventListener('click', function(e) {   
-          const backBtn = document.querySelector('.back-btn')
-          let currentButton = e.target
-          console.log(currentButton.tagName.toLowerCase(), currentButton.tagName.toLowerCase() == "button")
-          if (currentButton.tagName.toLowerCase() !== "button") {
-            currentButton = currentButton.closest('button')
-          }
-          const handleValidStep = () => {
-            updateButtonAndInputState(currentButton, false)
-            nextStep(stepIndexValue)
-            scrollToEl(document.querySelector('header'))
-            backBtn.classList.remove('hidden')
-          }
-          clearErrorMessages()
-          console.log('stepindexVAlue', stepIndexValue)
-          let stepValid = true;
- 
-          if(stepIndexValue === 1){
-          
-            handleValidStep()
-            
-            return
-          }
-          if(stepIndexValue === 2){
-            
-            if(currentButton.getAttribute("data-value") === "No") {
-              document.getElementById("finalhead").innerText = "Congratulations You May Qualify For Additional Benefits!"
-            }
-
-            handleValidStep()
-            
-            return
-          }
-          if(stepIndexValue === 3){
-            console.log()
-          tcount(60,"tcount")
-           handleValidStep()
-            return
-          }
-          if(stepIndexValue === 4){
-
-            console.log('FINAL STEP')
-            return
-          }
-         
-        });
-      });
-
-
     })
-    document.getElementById("finallottie").play()
-  addPhoneFormatterToElement(document.getElementById("phoneInput"))
+    handleNo.addEventListener("click", ()=> {
+      if (progress === 33) {
+          progress = 66;
+        }
+        if (progress === 0) {
+          progress = 33;
+        }
+        progressBar.style.width = progress + '%';
+      if(count === 0){
+        handleImg.style.display = 'none';
+        handleQuestion.innerText = "Are you currently on Medicare parts A and B?";
+        count++;
+      }else{
+        handleQuestion.innerText = "Your spot is being reserved for 1:00";
+        handleHeading.innerHTML = "Congratulations You May Qualify For Additional Benefits!";
+        handleYes.style.display = 'none'
+        handleNo.style.display = 'none'
+        handleCall.style.display = 'block';
+        handleVid.style.display = 'block';
+      }
+    })
   </script>
-  <script type="text/javascript">
-      
-      fetch("https://api.ipify.org/?format=json").then(response=>{return response.json()}).then(response => {
-        document.getElementById("ip").value = response.ip
-      })
-  </script>  
-  <input type="hidden" id="ip">
-  <input id="leadid_token" name="universal_leadid" type="hidden" value="">
-      <script id="LeadiDscript_campaign" type="text/javascript" async="" src="js/cd7eb4df-beca-4094-f100-c37699b41b7f.js"></script><script id="LeadiDscript" type="text/javascript">
-    (function() {
-    var s = document.createElement('script');
-    s.id = 'LeadiDscript_campaign';
-    s.type = 'text/javascript';
-    s.async = true;
-    s.src = '//create.lidstatic.com/campaign/cd7eb4df-beca-4094-f100-c37699b41b7f.js?snippet_version=2';
-    var LeadiDscript = document.getElementById('LeadiDscript');
-    LeadiDscript.parentNode.insertBefore(s, LeadiDscript);
-    })();
-    </script>
-    <noscript><img src='//create.leadid.com/noscript.gif?lac=EE9325A8-6663-59BB-1FFC-87C1636E50BC&lck=cd7eb4df-beca-4094-f100-c37699b41b7f&snippet_version=2' /></noscript>
-    <script type="text/javascript" src="js/passUrlParamsToLinks.js"></script>
-
+</footer>
 </body></html>
