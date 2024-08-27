@@ -54,6 +54,11 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Russo%20One">
 <link rel="stylesheet" href="css/tw-elements.min.css">
 <script src="https://cdn.tailwindcss.com"></script>
+<style>
+  #handleskip{
+    display: none;
+  }
+</style>
 </head>
 <body>
 
@@ -127,7 +132,7 @@ CALL <a href="tel:123-456-7890">123-456-7890</a>
     
       <div class="lander-item relative inline-block h-auto w-screen max-w-full translate-y-4 transform-none whitespace-normal align-top transition duration-200 ease-in" data-chain--component-target="question">
         <div class="text-[#19329a] italic text-[0.9em] font-semibold text-center mb-[5px]" id="handleHeading">Medicare Recipients Could Qualify for Additional Medicare Benefits</div>
-        <p style="text-align: center; font-size: 10px;">In order to see what additional benefits you can qualify for on your plan answer a few questions below and speak to a live representative who can help you with plans that service your area.</p>
+        <p style="text-align: center; font-size: 10px;">In order to see what additional benefits you can qualify for on your plan answer a few questions below and speak to a licensed insurance agent who can help you with plans that service your area.</p>
         <img src="images/image.png" class="mx-auto img-responsive wow flipInX animated  max-w-[250px] my-4" style="visibility: visible; animation-name: flipInX;" id="handleImg">
         <div class="mt-[15px] text-center text-[1.6em] font-bold leading-[1.2] text-[#2a2a2b] mb-7" id="handleQuestion">Do you live in the U.S.</div>
         <div class="flex items-center justify-center w-full">
@@ -141,8 +146,16 @@ CALL <a href="tel:123-456-7890">123-456-7890</a>
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"></path>
             </svg>
           </button>
+          
           <button data-action="click->chain--answer--button--component#handleAnswer" class="relative block bg-white text-[#0b3954] rounded-sm py-5 px-3.5 border border-[#0B3954] cursor-pointer shadow-md text-lg font-semibold" id="handleNo">
             No
+            <svg xmlns="http://www.w3.org/2000/svg" class="hidden selected-icon h-6 w-6 absolute right-4 top-1/2 transform -translate-y-1/2 text-[#0b3954]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" fill="white"></circle>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"></path>
+            </svg>
+          </button>
+          <button data-action="click->chain--answer--button--component#handleAnswer" class="relative block bg-white text-[#0b3954] rounded-sm py-5 px-3.5 border border-[#0B3954] cursor-pointer shadow-md text-lg font-semibold" id="handleSkip">
+            Skip
             <svg xmlns="http://www.w3.org/2000/svg" class="hidden selected-icon h-6 w-6 absolute right-4 top-1/2 transform -translate-y-1/2 text-[#0b3954]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" fill="white"></circle>
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"></path>
@@ -190,6 +203,7 @@ CALL <a href="tel:123-456-7890">123-456-7890</a>
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"></path>
             </svg>
           </button>
+          
         </div>
         <div class="text-center mt-8">
           <p class="text-[0.6em] mx-auto"></p>
@@ -210,7 +224,7 @@ CALL <a href="tel:123-456-7890">123-456-7890</a>
     
       <div class="lander-item relative inline-block h-auto w-screen max-w-full translate-y-4 transform-none whitespace-normal align-top transition duration-200 ease-in flex flex-col hidden" data-chain--component-target="question">
         <div class="text-[#19329a] italic text-[0.9em] font-semibold text-center mb-[5px]" id="finalhead">Congratulations! You could qualify for thousands in Medicare grocery allowances.</div>
-        <div class="mt-[15px] text-center text-[1.6em] font-bold leading-[1.2] text-[#2a2a2b] mb-7">Tap the button below to chat with a live representative <span id="tcount"></span></div>
+        <div class="mt-[15px] text-center text-[1.6em] font-bold leading-[1.2] text-[#2a2a2b] mb-7">Tap The Button Below To Chat With A Licensed Insurance Agent <span id="tcount"></span></div>
         <div class="mx-auto">
           <lottie-player id="finallottie" class="mx-auto" src="./assets/images/animations/ringing_phone.json" _src="./debt_flow/flag.json" background="transparent.html" style="width: 100%; max-width: 330px; width: 100%; max-width: 300px; height: 200px;" direction="1" mode="normal" loop=""></lottie-player>    
         </div>
@@ -285,16 +299,19 @@ const handleQuestion = document.getElementById("handleQuestion");
 const handleHeading = document.getElementById("handleHeading");
 const handleCall = document.getElementById("handleCall");
 const handleVid = document.getElementById("handleVid");
+const handleSkip = document.getElementById("handleSkip");
 const progressBar = document.querySelector('[data-chain--progress--component-target="barStatus"]');
 let count = 0;
 let progress = 0;
 
 handleYes.addEventListener("click", ()=> {
     if (progress === 33) {
+      handleSkip.style.display = "none";
       progress = 66;
     }
     if (progress === 0) {
       progress = 33;
+      handleSkip.style.display = "block";
     }
     progressBar.style.width = progress + '%';
   if(count === 0){
@@ -312,9 +329,34 @@ handleYes.addEventListener("click", ()=> {
 })
 handleNo.addEventListener("click", ()=> {
   if (progress === 33) {
+    handleSkip.style.display = "none";
       progress = 66;
     }
     if (progress === 0) {
+      handleSkip.style.display = "block";
+      progress = 33;
+    }
+    progressBar.style.width = progress + '%';
+  if(count === 0){
+    handleImg.style.display = 'none';
+    handleQuestion.innerText = "Are you currently on Medicare parts A and B?";
+    count++;
+  }else{
+    handleQuestion.innerText = "Tap the button below to chat with a live representative";
+    handleHeading.innerHTML = "Congratulations You May Qualify For Additional Benefits!";
+    handleYes.style.display = 'none'
+    handleNo.style.display = 'none'
+    handleCall.style.display = 'block';
+    handleVid.style.display = 'block';
+  }
+})
+handleSkip.addEventListener("click", ()=> {
+  if (progress === 33) {
+    handleSkip.style.display = "none";
+      progress = 66;
+    }
+    if (progress === 0) {
+      handleSkip.style.display = "block";
       progress = 33;
     }
     progressBar.style.width = progress + '%';
